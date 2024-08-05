@@ -1,8 +1,8 @@
 
 ## Recent Posts (Top 5)
-- [Setup AzCLI development environment](/docs/AzCLI/setup_azcli_development_environment.md)
+- [Setup AzCLI development environment](/AzCLI/setup_azcli_development_environment.md)
 
 
 ## Post Categories
 
-- [Az CLI](/docs/AzCLI/index.md)
+- [Az CLI](/AzCLI/index.md)
