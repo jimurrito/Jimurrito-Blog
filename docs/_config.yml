@@ -2,7 +2,7 @@
 
 # Site Title
 title: blog.jimurrito.com
-description: Blog for all the things
+description: A blog for all the things
 
 # Theme setup
 remote_theme: pages-themes/time-machine@v0.2.0
