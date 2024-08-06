@@ -3,4 +3,4 @@ All things related to the Azure CLI (Az CLI).
 
 ### Posts
 
-- [Setup AzCLI development environment](/AzCLI/setup_azcli_development_environment.md)
+- [Setup AzCLI development environment](setup_azcli_development_environment.md)
