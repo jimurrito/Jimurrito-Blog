@@ -1,16 +1,17 @@
-# Setup AzCLI development environment
+# Setup AzCLI Development Environment
 
 ###### *Published: 08/06/2024*
 
+The Az CLI is great, and maybe you want to add to its development. Maybe you want to fix a bug. This guide will show you how to setup `AzDev` with Python.
+
 ## Table of Contents
-1. [Prerequisites](#prerequisites)
-   1. [Optionals](#optional)
-
-
+- [Prerequisites](#prerequisites)
+   - [Optionals](#optional)
+- [Setup](#setup)
+   - [Fork/Clone the AzCLI Source](#1-forkclone-the-azcli-source)
+   - [Create a Virtual Environment for Python](#2-create-a-virtual-environment-for-python)
 
 <br>
-
-The Az CLI is great, and maybe you want to add to its development. Maybe you want to fix a bug. This guide will show you how to setup `AzDev` with Python.
 
 
 ## Prerequisites
@@ -27,11 +28,58 @@ The Az CLI is great, and maybe you want to add to its development. Maybe you wan
 - [VSCode Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
 
-
+### For this deployment, I will be using `WSL` running Debian.
 
 ## Setup
 
-For this deployment, I will be using `WSL` running Debian.
+### 1. Fork/Clone the AzCLI Source
+```bash
+# Cloning from Source
+git clone https://github.com/Azure/azure-cli.git
+
+# Cloning from Fork
+git clone https://github.com/<Github-User>/azure-cli.git
+```
+
+#### [Optional] Fetch Upstream
+Incase we cloned a Fork, and it is out of date, we can fetch from upstream to ensure we are working on the newest version of the source.
+
+```bash
+# Move to dir containing source
+cd azure-cli
+
+# Set upstream repo to the official source.
+git remote add upstream https://github.com/Azure/azure-cli.git
+
+# Fetch from source
+git fetch upstream
+```
+
+If you do this, you will likely need to reset the default branch for the repo so it matches the same on the official repo. For this, we can reset the local branch and set a default branch to build from.
+
+> For [Az CLI](https://github.com/Azure/azure-cli) the default branch should be `dev`
+> ```bash
+> git branch dev --set-upstream-to upstream/dev
+> ```
+> For [Az CLI Extensions](https://github.com/Azure/azure-cli-extensions) the default branch is `main`
+> ```bash
+> git branch main --set-upstream-to upstream/main
+> ```
+
+## 2. Create a virtual environment for Python
+
+In the root directory for your cloned repo, run the following.
+```bash
+python -m venv env
+# or
+python3 -m venv env
+```
+
+Then activate the environment.
+```bash
+source env/bin/activate
+```
+
 
 
 
