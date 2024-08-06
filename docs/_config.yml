@@ -7,6 +7,6 @@ description: A blog for all the things
 # Theme setup
 remote_theme: jekyll/minima
 minima:
-  skin: auto
+  skin: dark
 plugins:
 - jekyll-remote-theme
