@@ -28,4 +28,8 @@
   ```bash
   bundle exec jekyll serve
   ```
+
+## Helpful Links
+- [Setup Jekyll for local builds](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+- [Create a new Jekyll project for github-pages](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
     
