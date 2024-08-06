@@ -10,6 +10,7 @@
 - [Install using `Make`](#5-install-using-make)
 - [Verify Installation](#6-verify-installation)
 - [Add Python 3.*x* to path variable](#7-add-python-3x-to-path-variable)
+- [Install Pip](#install-pip)
 
 <br>
 

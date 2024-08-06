@@ -16,26 +16,32 @@ The Az CLI is great, and maybe you want to add to its development. Maybe you wan
 ## Prerequisites
 - Python 3.6 - 3.8. <u>3.9+ is not supported as of writing this.</u>
 - Pip
-- Wheel (via Pip)
+- Wheel 
+  - `pip install wheel`
+
+> *For help installing an older version of Python 3.x, please check out this guide on [Installing Python 3.x from source](../Linux/install_python3_from_source.md)*.
 
 
 ### Optional
 - A `WSL` instance to develop from.
 - [VSCode Remote Development Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
-> If you run a version of Debian, where apt no longer contains Python 3.8, please do the following.
-> 1. `sudo apt update`
-> 2. `sudo apt install software-properties-common`
-> 3. `sudo apt update`
-> 1. `sudo add-apt-repository ppa:deadsnakes/ppa`
-> 2. `sudo apt update`
-> 3. `sudo apt install python3.8`
-> 
 
 
 ## Setup
 
 For this deployment, I will be using `WSL` running Debian.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
