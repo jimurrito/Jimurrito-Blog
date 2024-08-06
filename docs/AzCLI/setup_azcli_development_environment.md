@@ -28,6 +28,7 @@ The Az CLI is great, and maybe you want to add to its development. Maybe you wan
 
 
 
+
 ## Setup
 
 For this deployment, I will be using `WSL` running Debian.
