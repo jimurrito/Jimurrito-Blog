@@ -68,13 +68,13 @@ git fetch upstream
 If you do this, you will likely need to reset the default branch for the repo so it matches the same on the official repo. For this, we can reset the local branch and set a default branch to build from.
 
 > For [Az CLI](https://github.com/Azure/azure-cli) the default branch should be `dev`
-> {% highlight bash %}
-> git branch dev --set-upstream-to upstream/dev
-> {% endhighlight %}
+{% highlight bash %}
+git branch dev --set-upstream-to upstream/dev
+{% endhighlight %}
 > For [Az CLI Extensions](https://github.com/Azure/azure-cli-extensions) the default branch is `main`
-> {% highlight bash %}
-> git branch main --set-upstream-to upstream/main
-> {% endhighlight %}
+{% highlight bash %}
+git branch main --set-upstream-to upstream/main
+{% endhighlight %}
 
 ### 2. Create a virtual environment for Python
 

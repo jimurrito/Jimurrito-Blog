@@ -30,10 +30,9 @@ linkedin_username: james-immer
 # Build settings
 theme: minima
 minima:
-  skin: dark
+  skin: auto
 plugins:
   - jekyll-feed
-
 
 # Exclude from processing.
 # The following items will not be processed, by default.
