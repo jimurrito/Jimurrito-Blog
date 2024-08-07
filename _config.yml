@@ -21,7 +21,8 @@
 title: blog.jimurrito.com
 email: jimurrito@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Blog to go over all things. Small things, big things, red things, blue things, and green things. Shiny things too! Mostly going over technical deployments and complaints I have with life in IT.
+  Blog to go over all things. Small things, big things, red things, blue things, and green things. Shiny things too! 
+#Mostly going over technical deployments and complaints I have with life in IT.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  jimurrito
