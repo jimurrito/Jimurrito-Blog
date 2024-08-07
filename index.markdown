@@ -6,3 +6,4 @@ title: Homepage
 layout: home
 ---
 
+<img src="assets/logo/logo-512x512.png" alt="Profile_Pic_Git" width="100" height="100"/>
