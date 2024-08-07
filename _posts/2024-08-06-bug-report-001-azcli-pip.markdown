@@ -108,6 +108,16 @@ Only change needed was ` and (not namespace.no)`.
 
 Once this fix was pushed. Public IPs in non-interactive mode were being created in the proper naming scheme. The best part; when we don't want a Public IP, we are no longer required to have one.
 
+{% highlight bash %}
+# Creates no Public IP in non-interactive mode (no-tty)
+az vm repair create -g cloudj -n cloudj --repair-username *********** --repair-password '***********' --no
+
+# Fixed Public IP naming in non-interactive mode
+az vm repair create -g cloudj -n cloudj --repair-username *********** --repair-password '***********'
+#> creates public ip called 'repair-cloudj-PublicIP'
+
+{% endhighlight %}
+
 ***Link to branch:** [https://github.com/jimurrito/azure-cli-extensions/tree/noPip-in-notty-mode](https://github.com/jimurrito/azure-cli-extensions/tree/noPip-in-notty-mode)*
 
 <br>
