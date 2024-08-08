@@ -34,6 +34,13 @@ minima:
   skin: auto
 plugins:
   - jekyll-feed
+  - jekyll-archives
+
+jekyll-archives:
+  layout: archive
+  enabled: 
+    - categories
+  
 
 # Exclude from processing.
 # The following items will not be processed, by default.
