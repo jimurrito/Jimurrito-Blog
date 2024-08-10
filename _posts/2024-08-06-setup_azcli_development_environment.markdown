@@ -2,7 +2,7 @@
 layout: post
 title:  "Setup AzCLI Development Environment using AzDev"
 date:   2024-08-06 17:00:00 -0700
-categories: azure
+categories: Azure
 ---
 
 The Az CLI is great, and maybe you want to add to its development. Maybe you want to fix a bug. This guide will show you how to setup `AzDev` with Python 3.

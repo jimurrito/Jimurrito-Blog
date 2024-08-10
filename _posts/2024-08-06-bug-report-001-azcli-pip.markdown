@@ -2,7 +2,7 @@
 layout: post
 title:  "Bug Report #1: Az CLI always creating a Public IP when non-interactive"
 date:   2024-08-06 19:00:00 -0700
-categories: bug-report
+categories: Bug-Report
 ---
 
 In today's bug report, we have an issue with the Az CLI extension `vm-repair`. *Affected Repo: [https://github.com/Azure/azure-cli-extensions](https://github.com/Azure/azure-cli-extensions)*
