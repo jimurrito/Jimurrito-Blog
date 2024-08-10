@@ -5,7 +5,7 @@ date:   2024-08-09 14:00:00 -0700
 categories: WSL
 ---
 
-**WSL**, or **<u>W</u>**indows **<u>S</u>**ubsystem for **<u>L</u>**inux is a great tool for development on Windows. Especially if you hate developing on Windows. This guide will briefly go over how to setup WSL on Windows, create a workspace, and then make the workspace portal for use on other machines.
+**WSL**, or **<u>W</u>**indows **<u>S</u>**ubsystem for **<u>L</u>**inux is a great tool for development on Windows. Especially if you hate developing on Windows. This guide will briefly go over how to setup WSL on Windows, create a workspace, and then make the workspace portable for use on other machines.
 
 **Table of Contents**
 - [Install WSL](#install-wsl)
