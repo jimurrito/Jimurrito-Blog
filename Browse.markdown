@@ -2,9 +2,9 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-title: Linux
+title: Browse
 layout: default
-permalink: /linux/
+permalink: /browse/
 ---
 
 <div id="archives">
