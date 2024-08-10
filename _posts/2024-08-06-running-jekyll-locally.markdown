@@ -7,6 +7,12 @@ categories: webdev
 
 Quick guide that goes over installing and running `Jekyll`.
 
+**Table of Contents**
+- [Setup](#setup)
+- [How to use](#how-to-use)
+- [Helpful Links](#helpful-links)
+
+
 ## Setup
 
 - Install Ruby 

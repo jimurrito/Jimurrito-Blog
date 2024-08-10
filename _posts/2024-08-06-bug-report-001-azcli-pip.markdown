@@ -5,9 +5,16 @@ date:   2024-08-06 19:00:00 -0700
 categories: bug-report
 ---
 
-In today's bug report, we have an issue with the Az CLI extension `vm-repair`.
+In today's bug report, we have an issue with the Az CLI extension `vm-repair`. *Affected Repo: [https://github.com/Azure/azure-cli-extensions](https://github.com/Azure/azure-cli-extensions)*
 
-**Affected Repo:** [https://github.com/Azure/azure-cli-extensions](https://github.com/Azure/azure-cli-extensions)
+**Table of Contents**
+- [The Issue](#the-issue)
+- [Reproduction steps](#reproduction-steps)
+  - [Notes](#notes)
+- [The fix](#the-fix)
+  - [The second issue](#the-second-issue)
+- [Conclusion](#conclusion)
+
 
 ## The Issue
 When creating a repair VM via the Az CLI command `az vm repair create` both options to bypass the Public-IP address prompt always create a public IP. No option to avoid creating a public IP.
@@ -26,7 +33,7 @@ However there is no way to create a repair VM non-interactively without also cre
    - `az extension add --name vm-repair`
 3. Then create a repair VM using one of the following commands.
 
-{% highlight bash %}
+```bash
 # uses --yes and creates a public IP address named 'False'
 az vm repair create -g cloudj -n cloudj --yes --repair-username *********** --repair-password '***********' 
 
@@ -35,7 +42,7 @@ az vm repair create -g cloudj -n cloudj --associate-public-ip $false --repair-us
 
 # uses --associate-public-ip set to '$True' and creates a public IP address named 'True'
 az vm repair create -g cloudj -n cloudj --associate-public-ip $True --repair-username *********** --repair-password '***********' 
-{% endhighlight %}
+```
 
 ### Notes
 
@@ -49,10 +56,10 @@ az vm repair create -g cloudj -n cloudj --associate-public-ip $True --repair-use
 
 In line 96 of `src/vm-repair/azext_vm_repair/custom.py` we can see the first call of `az vm create`.
 
-{% highlight python %}
+```python
 create_repair_vm_command = 'az vm create -g {g} -n {n} --tag {tag} --image {image} --admin-username {username} --admin-password {password} --public-ip-address {option} --custom-data {cloud_init_script}' \
 .format(g=repair_group_name, n=repair_vm_name, tag=resource_tag, image=os_image_urn, username=repair_username, password=repair_password, option=associate_public_ip, cloud_init_script=_get_cloud_init_script())
-{% endhighlight %}
+```
 
 According to the [documentation for `az vm create`](https://learn.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create), the input for `--public-ip-address` will be the name of the new IP address. If the input is `'""'` then no public IP address is created.
 
@@ -62,7 +69,7 @@ The fix *should* simple. Check the variable `associate_public_ip` and then creat
 
 Still I fixed the naming issue and created the pull request.
 
-{% highlight python %}
+```python
 public_ip_name = '""'
 if associate_public_ip or yes:
     public_ip_name = ('repair-' + vm_name + '_PublicIP')
@@ -71,7 +78,7 @@ if associate_public_ip or yes:
 if is_linux:
     create_repair_vm_command = 'az vm create -g {g} -n {n} --tag {tag} --image {image} --admin-username {username} --admin-password {password} --public-ip-address {option} --custom-data {cloud_init_script}' \
         .format(g=repair_group_name, n=repair_vm_name, tag=resource_tag, image=os_image_urn, username=repair_username, password=repair_password, option=public_ip_name, cloud_init_script=_get_cloud_init_script())
-{% endhighlight %}
+```
 
 ### The second issue
 
@@ -79,7 +86,7 @@ To fix the second issue, we need to create a new input parameter for the command
 
 To make a new parameter, we needed to edit the `_params.py` file. Specifically *fn* `load_arguments()`. *File path: src/vm-repair/azext_vm_repair/_params.py*
 
-{% highlight python %}
+```python
 with self.argument_context('vm repair create') as c:
     c.argument('repair_username', help='Admin username for repair VM.')
     c.argument('repair_password', help='Admin password for the repair VM.')
@@ -92,15 +99,15 @@ with self.argument_context('vm repair create') as c:
     c.argument('distro', help='Option to create repair vm from a specific linux distro (rhel7|rhel8|suse12|ubuntu20|centos7|oracle7)')
     c.argument('yes', help='Option to skip prompt for associating public ip and confirm yes to it in no Tty mode')
     c.argument('no', help='Option to skip prompt for associating public ip and confirm no to it in no Tty mode')
-{% endhighlight %}
+```
 
 Then we needed to ensure we would avoid the prompt for a Public Ip when we provided the new parameter. For this, we would have to edit *fn* `validate_create()` in the file. `_validators.py`
 
-{% highlight python %}
+```python
 # Prompt input for public ip usage
 if (not namespace.associate_public_ip) and (not namespace.yes) and (not namespace.no):
     _prompt_public_ip(namespace)
-{% endhighlight %}
+```
 
 Only change needed was ` and (not namespace.no)`.
 
@@ -108,7 +115,7 @@ Only change needed was ` and (not namespace.no)`.
 
 Once this fix was pushed. Public IPs in non-interactive mode were being created in the proper naming scheme. The best part; when we don't want a Public IP, we are no longer required to have one.
 
-{% highlight bash %}
+```bash
 # Creates no Public IP in non-interactive mode (no-tty)
 az vm repair create -g cloudj -n cloudj --repair-username *********** --repair-password '***********' --no
 
@@ -116,7 +123,7 @@ az vm repair create -g cloudj -n cloudj --repair-username *********** --repair-p
 az vm repair create -g cloudj -n cloudj --repair-username *********** --repair-password '***********'
 #> creates public ip called 'repair-cloudj-PublicIP'
 
-{% endhighlight %}
+```
 
 ***Link to branch:** [https://github.com/jimurrito/azure-cli-extensions/tree/noPip-in-notty-mode](https://github.com/jimurrito/azure-cli-extensions/tree/noPip-in-notty-mode)*
 
