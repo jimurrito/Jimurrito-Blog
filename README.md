@@ -5,3 +5,5 @@ Blog hosted by Github Pages
 
 https://blog.jimurrito.com
 
+
+[Runbook for setup of dev env with Nixos](_runbook.md)
