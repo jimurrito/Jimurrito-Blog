@@ -2,7 +2,7 @@
 layout: post
 title:  "Intro to Nixos for WSL"
 date:   2024-08-12 20:00:00 -0700
-categories: WSL Nixos
+categories: Nixos
 ---
 
 **Table of Contents**

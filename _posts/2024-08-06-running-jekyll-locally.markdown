@@ -2,7 +2,7 @@
 layout: post
 title:  "Running Jekyll Locally"
 date:   2024-08-06 14:00:00 -0700
-categories: Linux WebDev
+categories: Development
 ---
 
 Quick guide that goes over installing and running `Jekyll`.

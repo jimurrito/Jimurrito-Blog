@@ -2,7 +2,7 @@
 layout: post
 title:  "Installing Python 3.x from Source"
 date:   2024-08-05 21:00:00 -0700
-categories: Linux WebDev
+categories: Development
 ---
 
 **Table of Contents**
