@@ -23,7 +23,7 @@ If you are like me, you have multiple machines that you switch between to work o
 
 However, sometimes we need a bit more portability. Nixos can give use a higher degree of flexibility when it comes to package management; especially across multiple distributed WSL instances.
 
-*[Link to part two: Using Nixos for WSL]()*
+*[Link to part two: Improving the Nixos Experience]({% link _posts/2024-08-19-improving-the-nixos-experience.markdown %})*
 
 
 ## Setting up base instance of Nixos
@@ -286,7 +286,7 @@ In my configuration, I use `generic-wsl.nix` to setup all the general WSL config
 
   # Systemd rebuild service for on-boot rebuids of nixos from the repo
   systemd.services.rebuild = {
-    script = "${lib.getExe pkgs.nixos-rebuild} switch --flake git+ssh://git@github.com/jimurrito/nixos-config#${config.networking.hostName} --refresh";
+    script = "${lib.getExe pkgs.nixos-rebuild} switch --flake git+ssh://git@github.com/<username>/nixos-config#${config.networking.hostName} --refresh";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
     path = with pkgs; [ git openssh ];
@@ -350,7 +350,7 @@ With all of this set, we can now apply our configuration into our build of Nixos
 ```bash
 nixos-rebuild switch --flake ./flake.nix#hostname
 ```
-> Note: `hostname` should be replaced with your desired host config we setup in the `flake.nix` file. For this demo, my host config is called `nixdev`.
+> Note: `hostname` should be replaced with your desired host config we setup in the `flake.nix` file. For this demo, my host config is called `nixdev`. If you do not provide a hostname, it will default to the current hostname of the machine.
 
 
 ```bash
@@ -362,7 +362,8 @@ Once done, thats it! If this operation was successful, we should have all the pa
 
 ## Next steps
 
-From here, you should be able to customize Nixos to your hearts content. In the next post, I will go over some more advanced configurations and QOL changes I added to my Nixos installs.
+From here, you should be able to customize Nixos to your hearts content. In the next post, I will go over some more advanced configurations and QOL changes I added to my Nixos installs. *[Link to part two: Improving the Nixos Experience]({% link _posts/2024-08-19-improving-the-nixos-experience.markdown %})*
+
 
 
 ### Helpful links
